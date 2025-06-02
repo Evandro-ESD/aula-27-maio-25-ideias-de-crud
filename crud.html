@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            text-align: center;
+            padding: .5em;
+            background-color: rgba(0, 0, 0, 0.2);
+            height: 3rem;
+        }
+
+        body {
+            text-align: center;
+        }
+        h2{
+            margin-top: 30px;
+        }
+    </style>
+    <title>C.R.U.D.</title>
+    <!-- Menu:
+1 - Adicionar, 2 - listar, 3 - Atualizar - 4 - Remover - 5 - sair
+\n (pula linha) usar DO WHILE, SWITH-CASE, FUNÇÃO, ARRAY-->
+</head>
+<header>
+    <h1>C.R.U.D.</h1>
+</header>
+
+<body>
+
+    <h2>Abra o console do navegador</h2>
+
+
+    <script>
+        const usuarios = []
+        function menu(){
+            let opcao;
+            do{
+                opcao = prompt(`
+                Menu: \n1. Adicinar \n2. Listar \n3. Atualizar \n4. Remover \n5. Sair`
+                );
+                switch(opcao){
+                    case '1': 
+                        const nome = prompt(`Digite o nome do usuário: `)
+                        usuarios.push(nome)    
+                        alert(`Usuário adicionado!`)
+                        break
+
+                    case '2': 
+                        console.clear()
+                        if(usuarios.length === 0)
+                            console.log(`Nenhum usuário cadastrado!`)
+                        else
+                            console.log(`Usuários: `)
+                            usuarios.forEach((nome, i) => console.log(`${i} - ${nome}`))
+                        break 
+                    case '3': 
+                        const indice_atualizado = prompt(`Insira o índice do usuário: `)
+                        if(usuarios[indice_atualizado]){
+                            const novoNome = prompt(`Digite o novo nome: `)
+                            usuarios[indice_atualizado] = novoNome
+                            alert(`Usuário atualizado`)
+                            }else alert(`Índice inválido!!`)
+                        break 
+
+                    case '4': 
+                        const indice_remover = prompt(`Digite o índice a remover: `)
+                        if(usuarios[indice_remover]){
+                            const removido = usuarios.splice(indice_remover, 1)
+                            alert(`Removido: ${removido}`)
+                        }else alert(`Índice invalido!!`)
+                        break 
+
+                    case '5':
+                        alert(`Sair...`)
+                        break
+
+                    default: 
+                        alert('Opção inválida!!')
+
+                }
+
+    
+            } while (opcao !== "5")
+        }
+        menu()
+
+    </script>
+</body>
+
+</html>
